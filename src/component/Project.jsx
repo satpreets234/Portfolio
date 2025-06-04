@@ -54,9 +54,9 @@ export const Projects = (props) => {
 
   const projects = [
     {
-      title: "Architech Solutions",
+      title: "Airline System",
       description:
-        "Developed a scalable and secure architect portfolio, enabling architects to showcase projects.",
+        "Developed a scalable and secure Airline System, enabling people to book fights etc. using the razorpay payment gateway.",
       technologies: [
         { name: "ReactJs", key: "react" },
         { name: "NodeJs", key: "node" },
@@ -65,21 +65,21 @@ export const Projects = (props) => {
       image:
         "https://firebasestorage.googleapis.com/v0/b/trusty-sentinel-397012.appspot.com/o/architect.png?alt=media&token=853a190a-9636-40d0-b4ac-b3b4dc30319b",
       live: "https://itsbambrahcreation.vercel.app/",
-      code: "https://github.com/kambi22/ArchitectPortfolio",
+      code: "https://github.com/satpreets234/airline-system",
     },
     {
-      title: "Nfts Marketplace",
+      title: "Url shortener",
       description:
-        "Developed a system allowing users to mint NFTs uniquely associated with the owner's address and a unique token ID.",
+        "Developed a URL shortener application that allows users to shorten long URLs, making them easier to share and manage.",
       technologies: [
         { name: "ReactJs", key: "react" },
-        { name: "Ethereum", key: "ethereum" },
-        { name: "Web3.Js", key: "web3" },
+       { name: "NodeJs", key: "node" },
+        { name: "Mysql", key: "mysql" },
       ],
       image:
         "https://firebasestorage.googleapis.com/v0/b/trusty-sentinel-397012.appspot.com/o/marketplace.png?alt=media&token=0f3cf3a5-50d1-4dd3-a5d0-4fc8b5c07743",
       live: "https://github.com/kambi22/NFTMarketPlace",
-      code: "https://github.com/kambi22/NFTMarketPlace",
+      code: "https://github.com/satpreets234/url-shortning",
     },
     {
       title: "Quora Clone",
