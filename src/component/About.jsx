@@ -81,6 +81,7 @@ export const About = (props) => {
                 repeatType: "loop",
               }}
               whileHover="hover"
+              variants={cardVariants}
             >
               <span
                 className="pointer-events-none absolute inset-0 z-10 rounded-2xl border-3 border-l-0
@@ -110,6 +111,7 @@ export const About = (props) => {
                 Chandigarh College of Engineering & Technology
               </h3>
               <p className="text-cyan-200">Year: 2018-2022</p>
+               <p className="text-cyan-200">77%</p>
             </motion.div>
           </Grid>
           <Grid
@@ -122,13 +124,14 @@ export const About = (props) => {
               className=" relative group cursor-pointer overflow-hidden rounded-2xl border-2 border-transparent
                px-7 py-8 flex flex-col items-center justify-center text-center transition-all duration-300
                 bg-gradient-to-r from-transparent via-cyan-400/50 backdrop-blur-xl shadow-lg hover:shadow-blue-500/30"
-              animate={{ y: [2, -10, 0] }}
+              animate={{ y: [0, -10, 0] }}
               transition={{
                 duration: 3,
                 repeat: Infinity,
                 repeatType: "loop",
               }}
               whileHover="hover"
+              variants={cardVariants}
             >
               <span
                 className="pointer-events-none absolute inset-0 z-10 rounded-2xl border-3 border-l-0
@@ -151,9 +154,6 @@ export const About = (props) => {
                   <FaSchool size={50} />
                 </span>
               </motion.div>
-              <h5 className="text-white text-2xl sm:text-4xl mt-3">
-                Non-medical
-              </h5>
               <h5 className="text-white text-2xl sm:text-4xl ">
                 Physics , Chemistry & Maths
               </h5>

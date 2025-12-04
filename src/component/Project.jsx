@@ -50,6 +50,7 @@ export const Projects = (props) => {
     firebase: { icon: <SiFirebase className="text-[#e3e721]" /> },
     ethereum: { icon: <SiEthereum className="text-[#dbe1db]" /> },
     web3: { icon: <SiWeb3Dotjs className="text-[#dbd567]" /> },
+    mysql: { icon: <FaNodeJs className="text-[#00758F]" /> },
   };
 
   const projects = [
@@ -96,8 +97,6 @@ export const Projects = (props) => {
       code: "https://github.com/kambi22",
     },
   ];
-  const skills = projects.title;
-  console.log("skills are:", skills);
 
   return (
     <div id="projects" className=" h-full mt-30 pb-40    w-full m-auto">
@@ -237,7 +236,7 @@ export const Projects = (props) => {
                     <h5 className="text-2xl ">{item.title}</h5>
                     <p className="text-gray-100">{item.description}</p>
                     <div className="flex flex-wrap gap-1.5 mb-4">
-                      {item.technologies.map((tech, i) => (
+                      {item?.technologies?.map((tech, i) => (
                         <div
                           key={i}
                           className="flex items-center gap-1 bg-cyan-950/30 px-2 py-1 rounded-full border border-cyan-500/20"

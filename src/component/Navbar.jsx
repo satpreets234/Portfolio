@@ -36,7 +36,7 @@ export const Header = (props) => {
             transition={{ duration: 1 }}
             whileHover={{ scale: 1.1 }}
           >
-            Satpreet
+            Satpreet Singh
           </motion.p>
         </div>
 
@@ -62,35 +62,32 @@ export const Header = (props) => {
           />
         </nav>
 
-        <nav className="gap-5 mt-2 text-white ms-auto font-bold hidden md:flex">
-          <motion.div
-            whileHover={{ rotate: [0, -10, 10, 0] }}
-            whileTap={{ scale: 0.9 }}
-            transition={{ duration: 0.5 }}
-            className="cursor-pointer"
+        <nav className="gap-5 mt-2 text-white ms-auto font-bold hidden md:flex items-center">
+          <a 
+            href="https://www.linkedin.com/in/satpreet-bachhal-1bbb381b4/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="cursor-pointer hover:text-cyan-400 transition-all duration-300 hover:scale-110"
           >
-            <a href="https://github.com/satpreets234/">
-              <FaLinkedin size={20} />
-            </a>
-          </motion.div>
+            <FaLinkedin size={20} />
+          </a>
 
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="cursor-pointer"
+          <a 
+            href="https://github.com/satpreets234" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="cursor-pointer hover:text-cyan-400 transition-all duration-300 hover:scale-110"
           >
-            <a href="https://github.com/satpreets234">
-              <FaGithub size={20} />
-            </a>
-          </motion.div>
+            <FaGithub size={20} />
+          </a>
 
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="cursor-pointer"
+          <a 
+            href="mailto:singhsatpreet13@gmail.com" 
+            rel="noopener noreferrer" 
+            className="cursor-pointer hover:text-cyan-400 transition-all duration-300 hover:scale-110"
           >
             <MdEmail size={22} />
-          </motion.div>
+          </a>
         </nav>
         <div className="ms-auto block sm:hidden p-0">
           <IconButton

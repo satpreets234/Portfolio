@@ -7,11 +7,11 @@ import { hover, motion } from "framer-motion";
 import { FaLinkedin } from "react-icons/fa6";
 export const HeroSection = (props) => {
   const roles = [
-    "Full Stack Developer",
-    1000,
     "MERN Stack Developer", // Types this first
     1000, // Waits 1s
-    "React.js Expert",
+    "React.js Developer",
+    1000,
+    "Node.js Developer",
     1000,
   ];
 
@@ -45,7 +45,7 @@ export const HeroSection = (props) => {
               repeatType: "loop",
             }}
           >
-            {/* <img className="rounded-full" src={Myprofile} alt="Profile image" /> */}
+            <img className="rounded-full" src={Myprofile} alt="Profile image" />
           </motion.div>
         </Grid>
         <Grid
