@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Container, Icon, IconButton } from "@mui/material";
-import { FaGithub, FaLinkedin, FaPython, FaVoicemail } from "react-icons/fa6";
+import { FaGithub, FaLinkedin, FaCode, FaVoicemail } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { MdOutlineMenuOpen } from "react-icons/md";
 import Slogo from "../assets/Slogo.png";
@@ -19,7 +19,7 @@ export const Header = (props) => {
     <div className="pt-10 ms-2 pe-2">
       <SidebarCompnent open={sidebarOpen} onClose={handleSidebar} />
       <MotionContainer className="flex text-white bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 shadow-lg ">
-        <div className="absolute inset-0 rounded-xl p-[1px] overflow-hidden">
+        <div className="absolute inset-0 rounded-xl p-[1px] overflow-hidden pointer-events-none">
           <motion.div
             className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent"
             initial={{ x: "-100%" }}
@@ -63,31 +63,60 @@ export const Header = (props) => {
         </nav>
 
         <nav className="gap-5 mt-2 text-white ms-auto font-bold hidden md:flex items-center">
-          <a 
-            href="https://www.linkedin.com/in/satpreet-bachhal-1bbb381b4/" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="cursor-pointer hover:text-cyan-400 transition-all duration-300 hover:scale-110"
-          >
-            <FaLinkedin size={20} />
-          </a>
+          <div className="relative group">
+            <a 
+              href="https://www.linkedin.com/in/satpreet-bachhal-1bbb381b4/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="cursor-pointer hover:text-cyan-400 transition-all duration-300 hover:scale-110 block"
+            >
+              <FaLinkedin size={20} />
+            </a>
+            <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              LinkedIn
+            </span>
+          </div>
 
-          <a 
-            href="https://github.com/satpreets234" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="cursor-pointer hover:text-cyan-400 transition-all duration-300 hover:scale-110"
-          >
-            <FaGithub size={20} />
-          </a>
+          <div className="relative group">
+            <a 
+              href="https://github.com/satpreets234" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="cursor-pointer hover:text-cyan-400 transition-all duration-300 hover:scale-110 block"
+            >
+              <FaGithub size={20} />
+            </a>
+            <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              GitHub
+            </span>
+          </div>
 
-          <a 
-            href="mailto:singhsatpreet13@gmail.com" 
-            rel="noopener noreferrer" 
-            className="cursor-pointer hover:text-cyan-400 transition-all duration-300 hover:scale-110"
-          >
-            <MdEmail size={22} />
-          </a>
+          <div className="relative group">
+            <a 
+              href="mailto:singhsatpreet13@gmail.com" 
+              rel="noopener noreferrer" 
+              className="cursor-pointer hover:text-cyan-400 transition-all duration-300 hover:scale-110 block"
+            >
+              <MdEmail size={22} />
+            </a>
+            <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              Email
+            </span>
+          </div>
+
+          <div className="relative group">
+            <a 
+              href="https://leetcode.com/u/satpreet699/" 
+              target="_blank"
+              rel="noopener noreferrer" 
+              className="cursor-pointer hover:text-cyan-400 transition-all duration-300 hover:scale-110 block"
+            >
+              <FaCode size={22} />
+            </a>
+            <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              LeetCode
+            </span>
+          </div>
         </nav>
         <div className="ms-auto block sm:hidden p-0">
           <IconButton

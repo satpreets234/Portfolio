@@ -17,7 +17,9 @@ import {
   useTheme,
 } from "@mui/material";
 import { Carousel } from "react-responsive-carousel";
-
+import PitchStage from '../assets/Pitchstage.png';
+import SocialBlaze from '../assets/Socialblaze.png';
+import Baztel from '../assets/esim.png';
 import { SiEthereum, SiFirebase, SiMongodb, SiWeb3Dotjs } from "react-icons/si";
 import { RiExternalLinkFill } from "react-icons/ri";
 import { FaHandPointUp } from "react-icons/fa";
@@ -35,12 +37,14 @@ export const Projects = (props) => {
 
   const Variant = {
     autoPlay: true,
-    interval: 10000, // 3 seconds between slides
-    stopOnHover: true, // pause on hover
+    interval: 2000,
+    stopOnHover: true,
     infiniteLoop: true,
-    showArrows: true,
+    showArrows: false,
     showThumbs: false,
     showStatus: false,
+    showIndicators: true,
+    swipeable: true,
   };
 
   const techStack = {
@@ -55,47 +59,42 @@ export const Projects = (props) => {
 
   const projects = [
     {
-      title: "Airline System",
+      title: "Social Blaze",
       description:
-        "Developed a scalable and secure Airline System, enabling people to book fights etc. using the razorpay payment gateway.",
+        "A comprehensive social media management platform for creating posts across different connectors, scheduling content, automating with RSS feeds, and managing everything in calendar view.",
       technologies: [
         { name: "ReactJs", key: "react" },
         { name: "NodeJs", key: "node" },
         { name: "MongoDB", key: "mongodb" },
       ],
-      image:
-        "https://firebasestorage.googleapis.com/v0/b/trusty-sentinel-397012.appspot.com/o/architect.png?alt=media&token=853a190a-9636-40d0-b4ac-b3b4dc30319b",
-      live: "https://itsbambrahcreation.vercel.app/",
-      code: "https://github.com/satpreets234/airline-system",
+      image:SocialBlaze,
+      live: "https://socialblaze.ai/",
     },
     {
-      title: "Url shortener",
+      title: "Baztel eSIM",
       description:
-        "Developed a URL shortener application that allows users to shorten long URLs, making them easier to share and manage.",
-      technologies: [
-        { name: "ReactJs", key: "react" },
-       { name: "NodeJs", key: "node" },
-        { name: "Mysql", key: "mysql" },
-      ],
-      image:
-        "https://firebasestorage.googleapis.com/v0/b/trusty-sentinel-397012.appspot.com/o/marketplace.png?alt=media&token=0f3cf3a5-50d1-4dd3-a5d0-4fc8b5c07743",
-      live: "https://github.com/kambi22/NFTMarketPlace",
-      code: "https://github.com/satpreets234/url-shortning",
-    },
-    {
-      title: "Quora Clone",
-      description:
-        "Develop a Quora-style website where users can post content, ask questions, and provide answers to others’ queries.",
+        "An innovative eSIM purchasing platform that allows travelers to easily buy and activate eSIMs for any destination they plan to visit, ensuring seamless connectivity worldwide.",
       technologies: [
         { name: "ReactJs", key: "react" },
         { name: "NodeJs", key: "node" },
-        { name: "Firebase", key: "firebase" },
+        { name: "MongoDB", key: "mongodb" },
       ],
-      image:
-        "https://firebasestorage.googleapis.com/v0/b/trusty-sentinel-397012.appspot.com/o/Quora.png?alt=media&token=143de12e-57aa-4972-9a37-34cb7fb18f95",
-      live: "https://quora-4666c.web.app/",
-      code: "https://github.com/kambi22",
+      image: Baztel,
+      live: "https://baztel.co/",
     },
+    {
+      title: "Pitchset",
+      description:
+        "A powerful pitch deck and presentation management platform that helps businesses create, organize, and deliver compelling presentations with professional templates and collaboration features.",
+      technologies: [
+        { name: "ReactJs", key: "react" },
+        { name: "NodeJs", key: "node" },
+        { name: "MongoDB", key: "mongodb" },
+      ],
+      image: PitchStage,
+      live: "https://pitchset.com/",
+    },
+
   ];
 
   return (
@@ -120,9 +119,9 @@ export const Projects = (props) => {
               <div className="" data-aos="slide-up">
                 <div
                   key={i}
-                  className="m-5 mb-10 text-start cursor-pointer gap-5 rounded-2xl transition-all ease-out duration-300 hover:-translate-y-5 shadow-lg hover:shadow-blue-500/50"
+                  className="m-5 mb-10 text-start cursor-pointer gap-5 rounded-2xl transition-all ease-out duration-300 hover:-translate-y-5 shadow-lg hover:shadow-blue-500/50 bg-gradient-to-br from-gray-900 to-gray-800 overflow-hidden"
                 >
-                  <img className="rounded-2xl h-60" src={item.image} alt="" />
+                  <img className="rounded-t-2xl h-80 w-full object-cover transition-transform duration-500 hover:scale-105" src={item.image} alt="" />
                   <div className="text-white p-3">
                     <h5 className="text-2xl ">{item.title}</h5>
                     <p className="text-gray-100">{item.description}</p>
@@ -150,15 +149,6 @@ export const Projects = (props) => {
                       >
                         <RiExternalLinkFill className="mt-1 me-1" />
                         Live
-                      </a>
-                      <a
-                        href={item.code}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="outline-2 outline-purple-500 rounded-2xl ps-5 pe-5 pt-2 pb-2 shadow-sm hover:shadow-blue-500 flex"
-                      >
-                        <FaCode className="mt-1 me-1" />
-                        Code
                       </a>
                     </div>
                   </div>
@@ -177,9 +167,9 @@ export const Projects = (props) => {
               <div className="" data-aos="slide-up">
                 <div
                   key={i}
-                  className="m-3  text-start cursor-pointer gap-5 rounded-2xl transition-all ease-out duration-300 hover:-translate-y-5 shadow-lg hover:shadow-blue-500/50"
+                  className="m-3  text-start cursor-pointer gap-5 rounded-2xl transition-all ease-out duration-300 hover:-translate-y-5 shadow-lg hover:shadow-blue-500/50 bg-gradient-to-br from-gray-900 to-gray-800 overflow-hidden"
                 >
-                  <img className="rounded-2xl h-60" src={item.image} alt="" />
+                  <img className="rounded-t-2xl h-72 w-full object-cover transition-transform duration-500 hover:scale-105" src={item.image} alt="" />
                   <div className="text-white p-3">
                     <h5 className="text-2xl ">{item.title}</h5>
                     <p className="text-gray-100">{item.description}</p>
@@ -208,15 +198,6 @@ export const Projects = (props) => {
                         <RiExternalLinkFill className="mt-1 me-1" />
                         Live
                       </a>
-                      <a
-                        href={item.code}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="outline-2 outline-purple-500 rounded-2xl ps-5 pe-5 pt-2 pb-2 shadow-sm hover:shadow-blue-500 flex"
-                      >
-                        <FaCode className="mt-1 me-1" />
-                        Code
-                      </a>
                     </div>
                   </div>
                 </div>
@@ -229,9 +210,9 @@ export const Projects = (props) => {
               <div className="" data-aos="slide-up">
                 <div
                   key={i}
-                  className=" mb-20 text-start cursor-pointer gap-5 rounded-2xl transition-all ease-out duration-300 hover:-translate-y-5 shadow-lg hover:shadow-blue-500/50"
+                  className=" mb-20 text-start cursor-pointer gap-5 rounded-2xl transition-all ease-out duration-300 hover:-translate-y-5 shadow-lg hover:shadow-blue-500/50 bg-gradient-to-br from-gray-900 to-gray-800 overflow-hidden"
                 >
-                  <img className="rounded-2xl h-60" src={item.image} alt="" />
+                  <img className="rounded-t-2xl h-72 w-full object-cover transition-transform duration-500 hover:scale-105" src={item.image} alt="" />
                   <div className="text-white p-3">
                     <h5 className="text-2xl ">{item.title}</h5>
                     <p className="text-gray-100">{item.description}</p>
@@ -259,15 +240,6 @@ export const Projects = (props) => {
                       >
                         <RiExternalLinkFill className="mt-1 me-1" />
                         Live
-                      </a>
-                      <a
-                        href={item.code}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="outline-2 outline-purple-500 rounded-2xl ps-5 pe-5 pt-2 pb-2 shadow-sm hover:shadow-blue-500 flex"
-                      >
-                        <FaCode className="mt-1 me-1" />
-                        Code
                       </a>
                     </div>
                   </div>

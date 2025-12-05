@@ -35,6 +35,7 @@ export const HeroSection = (props) => {
           size={{ xl: 6, md: 6, sm: 12, xs: 12 }}
         >
           <motion.div
+
             animate={{
               y: [0, -10, 0],
             }}
@@ -65,15 +66,15 @@ export const HeroSection = (props) => {
           />
           <br />
           <motion.span
-            className="mx-auto sm:ml-2 text-white mt-3 cursor-pointer text-center rounded-2xl p-3 w-40 border-3 border-l-0
+            className="mx-auto sm:ml-2 text-white mt-6 cursor-pointer text-center rounded-2xl p-3 w-40 border-3 border-l-0
              border-r-0 border-b-blue-400 border-t-blue-400 relative block bg-gradient-to-r from-transparent via-cyan-500/50"
             whileTap={{ scale: 0.5 }}
             transition={{ duration: 1, ease: "linear" }}
           >
             <a
               // href="/resume.pdf"
-              href="/Satpreet_Singh _MERN_3.0_years.pdf"
-              download="Satpreet_Singh _MERN_3.0_years.pdf"
+              href="/Satpreet_Singh _MERN_3.6_years.pdf"
+              download="Satpreet_Singh _MERN_3.6_years.pdf"
             >
               My Resume
             </a>
