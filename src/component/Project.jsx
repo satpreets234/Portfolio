@@ -112,8 +112,6 @@ export const Projects = (props) => {
           <Carousel
             {...Variant}
             className=" "
-            centerMode={true}
-            centerSlidePercentage={33.33}
           >
             {projects.map((item, i) => (
               <div className="" data-aos="slide-up">
@@ -160,8 +158,6 @@ export const Projects = (props) => {
           <Carousel
             {...Variant}
             className=""
-            centerMode={true}
-            centerSlidePercentage={50}
           >
             {projects.map((item, i) => (
               <div className="" data-aos="slide-up">
