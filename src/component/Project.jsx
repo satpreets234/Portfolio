@@ -25,7 +25,64 @@ import { RiExternalLinkFill } from "react-icons/ri";
 import { FaHandPointUp } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
-export const Projects = (props) => {
+import { useTranslation } from "react-i18next";
+
+export const Projects = () => {
+  const { t } = useTranslation();
+  
+  // SEO optimization for Projects section
+  useEffect(() => {
+    // Add structured data for creative works/projects
+    const projectsStructuredData = {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Satpreet Singh",
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "MERN Stack Developer",
+        "description": "JavaScript developer, React.js developer, Node.js developer, Express.js developer specializing in full-stack web applications"
+      },
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Freelance Web Developer"
+      },
+      "hasCredential": [
+        {
+          "@type": "CreativeWork",
+          "name": "Social Blaze",
+          "description": "MERN Stack social media management platform built with React.js, Node.js, Express.js, MongoDB",
+          "url": "https://socialblaze.ai/",
+          "creator": "Satpreet Singh",
+          "programmingLanguage": ["JavaScript", "React", "Node.js", "Express", "MongoDB"]
+        },
+        {
+          "@type": "CreativeWork", 
+          "name": "Baztel eSIM",
+          "description": "React.js and Node.js eSIM platform for travelers with Express.js backend and MongoDB database",
+          "url": "https://baztel.co/",
+          "creator": "Satpreet Singh",
+          "programmingLanguage": ["JavaScript", "React", "Node.js", "Express", "MongoDB"]
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Pitchset",
+          "description": "Full-stack MERN presentation management platform using React.js, Node.js, Express.js, MongoDB",
+          "url": "https://pitchset.com/",
+          "creator": "Satpreet Singh", 
+          "programmingLanguage": ["JavaScript", "React", "Node.js", "Express", "MongoDB"]
+        }
+      ]
+    };
+
+    let projectsScript = document.getElementById('projects-structured-data');
+    if (!projectsScript) {
+      projectsScript = document.createElement('script');
+      projectsScript.id = 'projects-structured-data';
+      projectsScript.type = 'application/ld+json';
+      document.head.appendChild(projectsScript);
+    }
+    projectsScript.textContent = JSON.stringify(projectsStructuredData);
+  }, []);
   useEffect(() => {
     AOS.init({
       duration: 2000,
@@ -59,9 +116,8 @@ export const Projects = (props) => {
 
   const projects = [
     {
-      title: "Social Blaze",
-      description:
-        "A comprehensive social media management platform for creating posts across different connectors, scheduling content, automating with RSS feeds, and managing everything in calendar view.",
+      titleKey: "projects.socialBlaze.title",
+      descriptionKey: "projects.socialBlaze.description",
       technologies: [
         { name: "ReactJs", key: "react" },
         { name: "NodeJs", key: "node" },
@@ -71,9 +127,8 @@ export const Projects = (props) => {
       live: "https://socialblaze.ai/",
     },
     {
-      title: "Baztel eSIM",
-      description:
-        "An innovative eSIM purchasing platform that allows travelers to easily buy and activate eSIMs for any destination they plan to visit, ensuring seamless connectivity worldwide.",
+      titleKey: "projects.baztel.title",
+      descriptionKey: "projects.baztel.description",
       technologies: [
         { name: "ReactJs", key: "react" },
         { name: "NodeJs", key: "node" },
@@ -83,9 +138,8 @@ export const Projects = (props) => {
       live: "https://baztel.co/",
     },
     {
-      title: "Pitchset",
-      description:
-        "A powerful pitch deck and presentation management platform that helps businesses create, organize, and deliver compelling presentations with professional templates and collaboration features.",
+      titleKey: "projects.pitchset.title",
+      descriptionKey: "projects.pitchset.description",
       technologies: [
         { name: "ReactJs", key: "react" },
         { name: "NodeJs", key: "node" },
@@ -98,15 +152,29 @@ export const Projects = (props) => {
   ];
 
   return (
-    <div id="projects" className=" h-full mt-30 pb-40    w-full m-auto">
+    <div id="projects" className=" h-full mt-30 pb-40    w-full m-auto" itemScope itemType="https://schema.org/Person">
+      {/* SEO meta tags for Projects section */}
+      <meta itemProp="name" content="Satpreet Singh" />
+      <meta itemProp="description" content="MERN Stack developer portfolio showcasing JavaScript, React.js, Node.js, Express.js projects and full-stack web applications" />
+      <meta itemProp="jobTitle" content="MERN Stack Developer" />
+      
       <Container>
         <div className="flex justify-center mb-20 ">
           <h1 className="font-bold p-2 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-            My
+            {t('projects.title')}
           </h1>
           <h1 className="font-bold ms-2 text-white mt-2" data-aos="fade-down">
-            Projects
+            {t('projects.titleBold')}
           </h1>
+        </div>
+        
+        {/* Hidden SEO content for search engines */}
+        <div className="sr-only">
+          <p itemProp="description">
+            Portfolio of MERN Stack projects showcasing expertise in JavaScript development, React.js development, Node.js development, 
+            Express.js development, and MongoDB. Full-stack web applications built with modern technologies.
+          </p>
+          <span itemProp="knowsAbout">MERN Stack Projects, JavaScript Developer, React.js Developer, Node.js Developer, Express Developer, Full Stack Development</span>
         </div>
         {isXlScreen ? (
           <Carousel
@@ -121,8 +189,8 @@ export const Projects = (props) => {
                 >
                   <img className="rounded-t-2xl h-80 w-full object-cover transition-transform duration-500 hover:scale-105" src={item.image} alt="" />
                   <div className="text-white p-3">
-                    <h5 className="text-2xl ">{item.title}</h5>
-                    <p className="text-gray-100">{item.description}</p>
+                    <h5 className="text-2xl ">{t(item.titleKey)}</h5>
+                    <p className="text-gray-100">{t(item.descriptionKey)}</p>
                     <div className="flex flex-wrap gap-1.5 mb-4">
                       {item.technologies.map((tech) => (
                         <div
@@ -167,8 +235,8 @@ export const Projects = (props) => {
                 >
                   <img className="rounded-t-2xl h-72 w-full object-cover transition-transform duration-500 hover:scale-105" src={item.image} alt="" />
                   <div className="text-white p-3">
-                    <h5 className="text-2xl ">{item.title}</h5>
-                    <p className="text-gray-100">{item.description}</p>
+                    <h5 className="text-2xl ">{t(item.titleKey)}</h5>
+                    <p className="text-gray-100">{t(item.descriptionKey)}</p>
                     <div className="flex flex-wrap gap-1.5 mb-4">
                       {item.technologies.map((tech) => (
                         <div
@@ -192,7 +260,7 @@ export const Projects = (props) => {
                         className="outline-2 outline-cyan-500 rounded-2xl ps-5 pe-5 pt-2 pb-2 shadow-sm hover:shadow-blue-500 flex"
                       >
                         <RiExternalLinkFill className="mt-1 me-1" />
-                        Live
+                        {t('projects.live')}
                       </a>
                     </div>
                   </div>
@@ -210,8 +278,8 @@ export const Projects = (props) => {
                 >
                   <img className="rounded-t-2xl h-72 w-full object-cover transition-transform duration-500 hover:scale-105" src={item.image} alt="" />
                   <div className="text-white p-3">
-                    <h5 className="text-2xl ">{item.title}</h5>
-                    <p className="text-gray-100">{item.description}</p>
+                    <h5 className="text-2xl ">{t(item.titleKey)}</h5>
+                    <p className="text-gray-100">{t(item.descriptionKey)}</p>
                     <div className="flex flex-wrap gap-1.5 mb-4">
                       {item?.technologies?.map((tech, i) => (
                         <div
@@ -235,7 +303,7 @@ export const Projects = (props) => {
                         className="outline-2 outline-cyan-500 rounded-2xl ps-5 pe-5 pt-2 pb-2 shadow-sm hover:shadow-blue-500 flex"
                       >
                         <RiExternalLinkFill className="mt-1 me-1" />
-                        Live
+                        {t('projects.live')}
                       </a>
                     </div>
                   </div>

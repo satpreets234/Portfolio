@@ -1,11 +1,59 @@
 import { Container, Grid } from "@mui/material";
 import { motion } from "framer-motion";
-
 import { FaGraduationCap, FaSchool } from "react-icons/fa6";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-export const About = (props) => {
+import { useTranslation } from "react-i18next";
+
+export const About = () => {
+  const { t } = useTranslation();
+  
+  // SEO optimization for About section
+  useEffect(() => {
+    // Add structured data for education and professional background
+    const aboutStructuredData = {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Satpreet Singh",
+      "description": "Full-stack MERN developer with expertise in JavaScript, React.js, Node.js, Express.js development",
+      "alumniOf": [
+        {
+          "@type": "EducationalOrganization",
+          "name": "Chandigarh College of Engineering & Technology",
+          "description": "Bachelor of Engineering graduate specializing in software development"
+        },
+        {
+          "@type": "EducationalOrganization", 
+          "name": "Army Public School Chandimandir",
+          "description": "Science stream education with Physics, Chemistry & Mathematics"
+        }
+      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "MERN Stack Developer",
+        "description": "Expert in JavaScript development, React.js developer, Node.js developer, Express.js developer, MongoDB specialist"
+      },
+      "knowsAbout": [
+        "MERN Stack Development",
+        "JavaScript Developer",
+        "React.js Developer", 
+        "Node.js Developer",
+        "Express.js Developer",
+        "Full Stack Web Development",
+        "Software Engineering"
+      ]
+    };
+
+    let aboutScript = document.getElementById('about-structured-data');
+    if (!aboutScript) {
+      aboutScript = document.createElement('script');
+      aboutScript.id = 'about-structured-data';
+      aboutScript.type = 'application/ld+json';
+      document.head.appendChild(aboutScript);
+    }
+    aboutScript.textContent = JSON.stringify(aboutStructuredData);
+  }, []);
   useEffect(() => {
     AOS.refresh();
   }, []);
@@ -47,21 +95,33 @@ export const About = (props) => {
   };
 
   return (
-    <div id="about" className=" h-full mt-40  m-auto">
+    <div id="about" className=" h-full mt-40  m-auto" itemScope itemType="https://schema.org/Person">
+      {/* SEO meta tags for About section */}
+      <meta itemProp="name" content="Satpreet Singh" />
+      <meta itemProp="description" content="Full-stack MERN developer specializing in JavaScript, React.js, Node.js, Express.js development with engineering background" />
+      <meta itemProp="jobTitle" content="MERN Stack Developer" />
+      
       <Container className="">
         <div className="" data-aos="fade-up">
           <div className="flex justify-center">
             <h1 className="text-2xl text-center font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              About
+              {t('about.title')}
             </h1>
-            <h1 className="text-2xl ms-2 font-bold text-white">Me</h1>
+            <h1 className="text-2xl ms-2 font-bold text-white">{t('about.titleBold')}</h1>
           </div>
 
-          <p className="text-white text-2xl mt-3 bg-gra">
-            Full-stack developer specializing in MERN stack development, with
-            expertise in building efficient, scalable, and high-performance web
-            solutions.
+          <p className="text-white text-2xl mt-3 bg-gra" itemProp="description">
+            {t('about.description')}
           </p>
+          
+          {/* Hidden SEO content for search engines */}
+          <div className="sr-only">
+            <span itemProp="knowsAbout">MERN Stack, JavaScript Developer, React.js Developer, Node.js Developer, Express Developer, Full Stack Development</span>
+            <span itemProp="hasOccupation" itemScope itemType="https://schema.org/Occupation">
+              <span itemProp="name">Full Stack Developer</span>
+              <span itemProp="description">Expert MERN developer specializing in JavaScript, React.js, Node.js, Express.js development</span>
+            </span>
+          </div>
         </div>
         <Grid container sx={{ marginTop: "70px" }} spacing={3}>
           <Grid
@@ -104,13 +164,13 @@ export const About = (props) => {
                   <FaGraduationCap size={50} />
                 </span>
               </motion.div>
-              <h5 className="text-white text-2xl sm:text-4xl ">
-                Bachelor Of Engineering
+              <h5 className="text-white text-2xl sm:text-4xl " itemProp="alumniOf" itemScope itemType="https://schema.org/EducationalOrganization">
+                <span itemProp="name">{t('about.education.bachelor')}</span>
               </h5>
-              <h3 className="text-white ">
+              <h3 className="text-white " itemProp="name">
                 Chandigarh College of Engineering & Technology
               </h3>
-              <p className="text-cyan-200">Year: 2018-2022</p>
+              <p className="text-cyan-200">{t('about.education.year')}: 2018-2022</p>
                <p className="text-cyan-200">77%</p>
             </motion.div>
           </Grid>
@@ -154,13 +214,13 @@ export const About = (props) => {
                   <FaSchool size={50} />
                 </span>
               </motion.div>
-              <h5 className="text-white text-2xl sm:text-4xl ">
-                Physics , Chemistry & Maths
+              <h5 className="text-white text-2xl sm:text-4xl " itemProp="alumniOf" itemScope itemType="https://schema.org/EducationalOrganization">
+                <span itemProp="name">{t('about.education.school')}</span>
               </h5>
-              <h3 className="text-white mt-4">
+              <h3 className="text-white mt-4" itemProp="name">
                 Army Public School Chandimandir
               </h3>
-              <p className="text-cyan-200 mt-4">Year: 2016-2018</p>
+              <p className="text-cyan-200 mt-4">{t('about.education.year')}: 2016-2018</p>
               <p className="text-cyan-200 mt-4">87%</p>
             </motion.div>
           </Grid>

@@ -42,7 +42,61 @@ import "aos/dist/aos.css";
 import { useEffect } from "react";
 import { IoLogoJavascript } from "react-icons/io5";
 import { DiGoogleCloudPlatform } from "react-icons/di";
-export const Skills = (props) => {
+import { useTranslation } from "react-i18next";
+
+export const Skills = () => {
+  const { t } = useTranslation();
+  
+  // SEO optimization for Skills section
+  useEffect(() => {
+    // Add structured data for technical skills
+    const skillsStructuredData = {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Satpreet Singh",
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "MERN Stack Developer",
+        "skills": [
+          "JavaScript Developer",
+          "React.js Developer", 
+          "Node.js Developer",
+          "Express.js Developer",
+          "MongoDB Developer",
+          "Full Stack Development",
+          "TypeScript",
+          "Next.js",
+          "Redux",
+          "MySQL",
+          "AWS",
+          "Git",
+          "REST APIs"
+        ]
+      },
+      "knowsAbout": [
+        "MERN Stack",
+        "JavaScript Development",
+        "React.js Development",
+        "Node.js Development", 
+        "Express.js Development",
+        "MongoDB",
+        "Full Stack Web Development",
+        "Frontend Development",
+        "Backend Development",
+        "Database Management",
+        "Cloud Computing"
+      ]
+    };
+
+    let skillsScript = document.getElementById('skills-structured-data');
+    if (!skillsScript) {
+      skillsScript = document.createElement('script');
+      skillsScript.id = 'skills-structured-data';
+      skillsScript.type = 'application/ld+json';
+      document.head.appendChild(skillsScript);
+    }
+    skillsScript.textContent = JSON.stringify(skillsStructuredData);
+  }, []);
   useEffect(() => {
     AOS.init({
       duration: 2000,
@@ -87,17 +141,32 @@ export const Skills = (props) => {
   const toolsTech = [...ToolsSkills, ...ToolsSkills, ...ToolsSkills];
 
   return (
-    <div id="skills" className="h-fit    w-full overflow-hidden py-8 mt-30">
+    <div id="skills" className="h-fit w-full overflow-hidden py-8 mt-30" itemScope itemType="https://schema.org/Person">
+      {/* SEO meta tags for Skills section */}
+      <meta itemProp="name" content="Satpreet Singh" />
+      <meta itemProp="description" content="Expert MERN developer with skills in JavaScript, React.js, Node.js, Express.js development and modern web technologies" />
+      <meta itemProp="jobTitle" content="MERN Stack Developer" />
+      
       <Container className="relative contain-content pb-10 ">
         <div className="mt-29 left-0  h-100 w-50 absolute z-10 backgroundColorsLeft"></div>
         <div className="mt-29 ms-auto h-100 right-0 w-50 absolute z-10 backgroundColorsRight"></div>
+        
         <div className="flex justify-center">
           <h1 className="font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-            Tech
+            {t('skills.title')}
           </h1>
           <h1 className="font-bold ms-2 text-white" data-aos="fade-left">
-            Stack
+            {t('skills.titleBold')}
           </h1>
+        </div>
+        
+        {/* Hidden SEO content for search engines */}
+        <div className="sr-only">
+          <p itemProp="description">
+            Expert MERN Stack Developer with comprehensive skills in JavaScript development, React.js development, Node.js development, 
+            Express.js development, and modern web technologies. Specialized in full-stack web development.
+          </p>
+          <span itemProp="knowsAbout">MERN Stack, JavaScript Developer, React.js Developer, Node.js Developer, Express Developer, MongoDB, TypeScript, Next.js, Redux</span>
         </div>
         <motion.div
           className="flex gap-3 items-center mt-15 "

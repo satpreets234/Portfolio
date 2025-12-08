@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Container, Icon, IconButton } from "@mui/material";
 import { FaGithub, FaLinkedin, FaCode, FaVoicemail } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
@@ -6,9 +6,54 @@ import { MdOutlineMenuOpen } from "react-icons/md";
 import Slogo from "../assets/Slogo.png";
 import { motion } from "framer-motion";
 import { SidebarCompnent } from "./Sidebar";
+import { ThemeToggle } from "./ThemeToggle";
+import { LanguageSelector } from "./LanguageSelector";
+import { useTranslation } from "react-i18next";
 
-export const Header = (props) => {
+export const Header = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { t } = useTranslation();
+
+  // SEO optimization for navigation
+  useEffect(() => {
+    // Add navigation structured data
+    const navStructuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Satpreet Singh - MERN Stack Developer Portfolio",
+      "description": "Professional portfolio of MERN Stack developer specializing in JavaScript, React.js, Node.js, Express.js development",
+      "url": window.location.origin,
+      "author": {
+        "@type": "Person",
+        "name": "Satpreet Singh",
+        "jobTitle": "MERN Stack Developer",
+        "description": "Expert JavaScript developer, React.js developer, Node.js developer, Express.js developer",
+        "sameAs": [
+          "https://www.linkedin.com/in/satpreet-bachhal-1bbb381b4/",
+          "https://github.com/satpreets234",
+          "https://leetcode.com/u/satpreet699/"
+        ]
+      },
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Satpreet Singh",
+        "hasOccupation": {
+          "@type": "Occupation",
+          "name": "Full Stack Developer",
+          "description": "MERN Stack developer with expertise in JavaScript, React.js, Node.js, Express.js development"
+        }
+      }
+    };
+
+    let navScript = document.getElementById('nav-structured-data');
+    if (!navScript) {
+      navScript = document.createElement('script');
+      navScript.id = 'nav-structured-data';
+      navScript.type = 'application/ld+json';
+      document.head.appendChild(navScript);
+    }
+    navScript.textContent = JSON.stringify(navStructuredData);
+  }, []);
 
   const handleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -16,7 +61,12 @@ export const Header = (props) => {
   const MotionContainer = motion.create(Container);
 
   return (
-    <div className="pt-10 ms-2 pe-2">
+    <div className="pt-10 ms-2 pe-2" itemScope itemType="https://schema.org/Person">
+      {/* SEO meta tags for navigation */}
+      <meta itemProp="name" content="Satpreet Singh" />
+      <meta itemProp="description" content="MERN Stack developer specializing in JavaScript, React.js, Node.js, Express.js development" />
+      <meta itemProp="jobTitle" content="MERN Stack Developer" />
+      
       <SidebarCompnent open={sidebarOpen} onClose={handleSidebar} />
       <MotionContainer className="flex text-white bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 shadow-lg ">
         <div className="absolute inset-0 rounded-xl p-[1px] overflow-hidden pointer-events-none">
@@ -42,16 +92,16 @@ export const Header = (props) => {
 
         <nav className="hidden md:flex gap-10 me-3 text-white m-auto cursor-pointer">
           <a className=" hover-underline-animation center" href="#hero">
-            Home
+            {t('nav.home')}
           </a>
           <a className=" hover-underline-animation center" href="#skills">
-            Skills
+            {t('nav.skills')}
           </a>
           <a className=" hover-underline-animation center" href="#projects">
-            Projects
+            {t('nav.projects')}
           </a>
           <a className=" hover-underline-animation center" href="#about">
-            About
+            {t('nav.about')}
           </a>
           <motion.a
             className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400"
@@ -63,6 +113,8 @@ export const Header = (props) => {
         </nav>
 
         <nav className="gap-5 mt-2 text-white ms-auto font-bold hidden md:flex items-center">
+          <ThemeToggle />
+          <LanguageSelector />
           <div className="relative group">
             <a 
               href="https://www.linkedin.com/in/satpreet-bachhal-1bbb381b4/" 
